@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security bot Privacy Policy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../privacy/index.html">Privacy Policy</a>
+    <a href="../tos/index.html">Terms of Service</a>
+    <a href="../contact">Contact</a>
+  </nav>
+  <h1>Contact</h1>
+  <form class="content" action="mailto:your@email.com" method="POST" enctype="text/plain">
+    <div class="toprow">
+        <div>
+            <label for="name">Name:</label><br>
+            <input class="name" type="text" id="name" name="name" required><br>
+        </div>
+        <div>
+            <label for="text">Subject:</label><br>
+            <input type="text" class="text" id="text" name="text" required><br>
+
+        </div>
+    </div>
+
+    <div>
+        <label for="message">Message:</label><br>
+        <textarea class="message" id="message" name="message" rows="16" cols="50" required></textarea><br><br>
+    </div>
+
+
+    <input class="submit" type="submit" value="Submit">
+  </form>
+  <div class="footer">
+    2025 Security bot
+  </div>
+  <script>
+    // Manual + system theme switcher
+    const toggleBtn = document.getElementById('theme-toggle');
+    const darkClass = 'dark-mode';
+
+    function setTheme(dark, save = true) {
+      if (dark) {
+        document.documentElement.classList.add(darkClass);
+        toggleBtn.textContent = '☀️';
+        if (save) localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove(darkClass);
+        toggleBtn.textContent = '🌙';
+        if (save) localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // Detect system preference and saved preference
+    function getPreferredTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') return true;
+      if (savedTheme === 'light') return false;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    // Listen for system theme changes if user hasn't set manually
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) setTheme(e.matches, false);
+    });
+
+    // Initialize theme
+    setTheme(getPreferredTheme(), false);
+
+    toggleBtn.onclick = () => {
+      setTheme(!document.documentElement.classList.contains(darkClass));
+    };
+  </script>
+</body>
+</html>
