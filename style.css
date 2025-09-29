@@ -36,6 +36,33 @@ nav a:hover {
   text-align: center;
   color: #6c757d;
 }
+    .features {
+      max-width: 50vw;
+      margin: 20px auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 8px;
+      background: #1e1e1e;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+ul {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 1vw;
+    margin: 0;
+}
+h1 {
+    color: #007bff;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+.features-title {
+  margin-top: 0;
+}
+.title {
+  margin-top: 20px;
+}
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #121212;
@@ -47,5 +74,9 @@ nav a:hover {
   }
   .footer {
     color: #aaaaaa;
+  }
+  .features {
+    background: #1e1e1e;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
   }
 }
